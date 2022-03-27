@@ -29,7 +29,7 @@ const Auth:FC<{
             <AuthWrapper>
                 <AuthForm onSubmit={onSubmit} className="bg-primary">
                     <Title className="text-primary">{title}</Title>
-                    <Text className="text-primary">
+                    <Text className="text-secondary">
                         {text} 
                         <Link href={linkUrl}>
                             <LinkColor> {linkText}</LinkColor>

@@ -85,7 +85,7 @@ const register:NextPage = () => {
             <Row>
                 <Column>
                     <RowInput
-                        className="bg-primary text-secondary border-secondary"
+                        className="bg-primary text-secondary border-primary"
                         type="text" 
                         name="fName"
                         placeholder="Enter your first name"
@@ -98,7 +98,7 @@ const register:NextPage = () => {
                 </Column>
                 <Column>
                     <RowInput
-                        className="bg-primary text-secondary border-secondary"
+                        className="bg-primary text-secondary border-primary"
                         type="text" 
                         name="lName"
                         placeholder="Enter your last name"
@@ -111,7 +111,7 @@ const register:NextPage = () => {
                 </Column>
             </Row>
             <Input
-                className="bg-primary text-secondary border-secondary"
+                className="bg-primary text-secondary border-primary"
                 type="email" 
                 name="email"
                 placeholder="Enter your email"
@@ -122,7 +122,7 @@ const register:NextPage = () => {
                 message={errors.email}
             />
             <Input
-                className="bg-primary text-secondary border-secondary"
+                className="bg-primary text-secondary border-primary"
                 type="password" 
                 name="password"
                 placeholder="Enter your password"
@@ -133,7 +133,7 @@ const register:NextPage = () => {
                 message={errors.password}
             />
             <Input
-                className="bg-primary text-secondary border-secondary"
+                className="bg-primary text-secondary border-primary"
                 type="password" 
                 name="repeatPassword"
                 placeholder="Repeat your password"

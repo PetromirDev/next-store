@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { NextPage } from "next"
 import { useRouter } from "next/router"
 // Context
@@ -36,7 +36,6 @@ const login:NextPage = () => {
         const errorValues = validateLogin(values)
         setErrors(errorValues)
         if(JSON.stringify(errorValues) == JSON.stringify(defaultValues)) {
-            // setValues(defaultValues);
             setIsSubmit(true);
         }
     }
@@ -73,7 +72,7 @@ const login:NextPage = () => {
             onSubmit={handleSubmit}
         >
             <Input 
-                className="bg-primary text-secondary border-secondary"
+                className="bg-primary text-secondary border-primary"
                 name="email"
                 type="email" 
                 placeholder="Enter your email"
@@ -84,7 +83,7 @@ const login:NextPage = () => {
                 message={errors.email}
             />
             <Input 
-                className="bg-primary text-secondary border-secondary"
+                className="bg-primary text-secondary border-primary"
                 name="password"
                 type="password" 
                 placeholder="Enter your password"

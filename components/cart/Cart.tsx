@@ -89,7 +89,7 @@ const Cart:FC = () => {
                     <SubtotalText className="text-primary">Subtotal</SubtotalText>
                     <Subtotal className="text-primary">$ {cart.total/100}</Subtotal>
                 </SubtotalWrapper>
-                <SubtotalSeparator className="border-primary"/>
+                <SubtotalSeparator className="bg-secondary"/>
                 <CheckoutButton>Secure checkout</CheckoutButton>
             </Bottom>
 

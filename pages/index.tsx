@@ -27,11 +27,11 @@ const categories = [
     text: "The ultimate in portable computing.",
     category: "laptop"
   }
-]
+];
 
 const Home: NextPage<{data: ProductType[]}> = ({data}) => {
   const [products, setProducts] = useState<ProductType[]>(data)
-
+  
   return (
     <div>
       <Navbar/>
@@ -52,7 +52,7 @@ const Home: NextPage<{data: ProductType[]}> = ({data}) => {
           />
         ))}
       </Categories>
-      <CategorySeparator/>
+      <CategorySeparator className="bg-secondary"/>
       <Products>
         {products.map(product => (
           <Product
