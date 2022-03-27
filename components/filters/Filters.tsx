@@ -1,5 +1,7 @@
-import { FC, useEffect, useState, Dispatch, SetStateAction } from "react";
+import { FC, useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+// Context
+import { useUserContext } from "../../context/contextProvider";
 // Icons
 import FilterIcon from '@mui/icons-material/FilterAlt';
 // Types
@@ -29,6 +31,7 @@ const Filters:FC<{
     priceRange, 
     setPriceRange
 }) => {
+    const {theme} = useUserContext();
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     return (    
@@ -38,7 +41,7 @@ const Filters:FC<{
                 <FilterIconWrapper onClick={() => setIsOpen(old => !old)}>
                     <FilterIcon 
                         sx={{
-                            color: "#000",
+                            color: theme.textPrimary,
                             fontSize: 28
                         }}
                     />

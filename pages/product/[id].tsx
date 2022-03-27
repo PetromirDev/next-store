@@ -16,47 +16,52 @@ import Remove from "@mui/icons-material/Remove"
 import Add from "@mui/icons-material/Add"
 
 const Product:NextPage<{data: ProductType}> = ({data}) => {
-    const {user, setCart, setIsCartOpen} = useUserContext()
+    const {
+        theme, 
+        user, 
+        setCart, 
+        setIsCartOpen
+    } = useUserContext();
     const [quantity, setQuantity] = useState<number>(1)
     const {image, price, name, description, id} = data;
     
     return (
         <div>
-            <Page>
+            <Page className="bg-secondary">
                 <Navbar/>
                 <Center>
-                    <ProductWrapper>
+                    <ProductWrapper className="bg-primary">
                         <ProductBody>
                             <ProductImage 
                                 src={image}
                             />
                             <ProductRight>
                                 <Column>
-                                    <Name>{name}</Name>
-                                    <Description>{description}</Description>
+                                    <Name className="text-primary">{name}</Name>
+                                    <Description className="text-secondary">{description}</Description>
                                 </Column>
                                 <Column>
                                     <PriceWrapper>
                                         <QuantityWrapper>
-                                            <Quantity>Quantity: </Quantity>
+                                            <Quantity className="text-secondary">Quantity: </Quantity>
                                             <Remove
-                                                sx={{fontSize: 16, opacity: .6}}
+                                                sx={{fontSize: 16, color: theme.textSecondary}}
                                                 onClick={() => setQuantity(old => old == 1 ? 1 : old - 1)}
                                             />
-                                            <Quantity style={{margin: "0 5px"}}>{quantity}</Quantity>
+                                            <Quantity style={{margin: "0 5px"}} className="text-secondary">{quantity}</Quantity>
                                             <Add
-                                                sx={{fontSize: 16, opacity: .6}}
+                                                sx={{fontSize: 16, color: theme.textSecondary}}
                                                 onClick={() => setQuantity(old => old + 1)}
                                             />
                                         </QuantityWrapper>
-                                        <Price>$ {price * quantity / 100}</Price>
+                                        <Price className="text-secondary">$ {price * quantity / 100}</Price>
                                     </PriceWrapper>
-                                    <AddToCartButton onClick={() => AddToCart(user.id, id, quantity, setCart, image, price, name, setIsCartOpen)}>Add to cart</AddToCartButton>
+                                    <AddToCartButton onClick={() => AddToCart(user.id, id, quantity, setCart, image, price, name, setIsCartOpen).then(() => setQuantity(1))}>Add to cart</AddToCartButton>
                                 </Column>
                             </ProductRight>
                         </ProductBody>
                         <Link href="/">
-                            <BackLink>Back</BackLink>
+                            <BackLink className="text-tertiary">Back</BackLink>
                         </Link>
                     </ProductWrapper>
                 </Center>
@@ -115,7 +120,6 @@ const Name = styled.h1`
 
 const Description = styled.p`
     font-size: 1rem;
-    opacity: .6;
 `;
 
 const PriceWrapper = styled(Between)`
@@ -128,7 +132,6 @@ const QuantityWrapper = styled.div`
 `;
 
 const Quantity = styled.p`
-    opacity: .6;
     margin-right: 10px;
 `;
 
@@ -143,7 +146,6 @@ const AddToCartButton = styled(PrimaryButton)`
 `;
 
 const BackLink = styled.a`
-    opacity: .6;
     font-size: 1rem;
     margin-top: 30px;
 `;
@@ -151,7 +153,6 @@ const BackLink = styled.a`
 const ProductWrapper = styled.div`
     padding: 40px 30px;
     padding-bottom: 15px;
-    background-color: #fff;
     border-radius: 5px;
     display: flex;
     flex-direction: column;

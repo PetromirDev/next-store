@@ -2,24 +2,34 @@ import { createContext, Dispatch, FC, SetStateAction, useContext, useEffect, use
 import jwt_decode from "jwt-decode";
 // Types
 import { CartType } from "../types/Cart";
-import { UserType } from "../types/User";
+import { ThemeType, UserType } from "../types/User";
 
 const themes = {
     "light": {
-        backgroundColor: "#fff",
-        primary: "#000",
+        bgPrimary: "#fff",
+        bgSecondary: "#F6F6F6",
+        textPrimary: "#000",
+        textSecondary: "rgba(0,0,0,0.6)",
+        textTertiary: "rgba(0,0,0,0.38)",
+        highlighted: "#0071e3",
+        borderPrimary: "#DDDDDD",
+        borderSecondary: "#F6F6F6"
     },
     "dark": {
-        backgroundColor: "#000",
-        primary: "#fff",
+        bgPrimary: "#121212",
+        bgSecondary: "#1C1C1C",
+        textPrimary: "rgba(255,255,255,0.87)",
+        textSecondary: "rgba(255,255,255,0.6)",
+        textTertiary: "rgba(255,255,255,0.38)",
+        highlighted: "#0071e3",
+        borderPrimary: "rgba(255,255,255, .12)",
+        borderSecondary: "rgba(255,255,255, .08)"
     }
 }
 
 interface ContextType {
-    theme: {
-        backgroundColor: string;
-        primary: string;
-    },
+    theme: ThemeType,
+    setTheme: Dispatch<SetStateAction<"light" | "dark">>,
     isCartOpen: boolean;
     setIsCartOpen: (isCartOpen: boolean) => void;
     cart: CartType;
@@ -33,10 +43,7 @@ const UserContext = createContext<ContextType>({} as ContextType);
 const UserProvider:FC<{children?: JSX.Element | JSX.Element[]}> = ({children}) => {
     const [theme, setTheme] = useState<keyof typeof themes>("light");
     const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-    const [cart, setCart] = useState<CartType>({
-        items: [],
-        total: 0
-    });
+    const [cart, setCart] = useState<CartType>({items: [], total: 0});
     const [user, setUser] = useState<UserType>({} as UserType)
     const [authToken, setAuthToken] = useState<string>(() => {
         // Getting token from local storage
@@ -69,12 +76,13 @@ const UserProvider:FC<{children?: JSX.Element | JSX.Element[]}> = ({children}) =
         <UserContext.Provider 
             value={{
                 theme: themes[theme], 
+                setTheme: setTheme,
                 isCartOpen: isCartOpen, 
                 setIsCartOpen: setIsCartOpen, 
                 cart: cart,
                 setCart: setCart,
                 setAuthToken: setAuthToken,
-                user: user,
+                user: user
             }}
         >
             {!isLoading ? children : <div>Loading...</div>}

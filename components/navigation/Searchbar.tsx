@@ -11,14 +11,14 @@ const SearchResult:FC<{
 }> = ({image, name, price, id}) => {
     return (
         <Link href={`/product/${id}`}>
-            <Result className="pointer">
+            <Result className="pointer border-secondary">
                 <Image
                     alt=""
                     src={image}
                 />
                 <Body>
-                    <Name>{name}</Name>
-                    <Price>$ {price/100}</Price>
+                    <Name className="text-primary">{name}</Name>
+                    <Price className="text-primary">$ {price/100}</Price>
                 </Body>
             </Result>
         </Link>
@@ -40,15 +40,17 @@ const Searchbar: FC<{}> = () => {
     return (
         <SearchbarWrapper>
             <SearchInput
+                className="bg-primary text-secondary border-primary"
                 isOpen={search.length > 2}
                 placeholder="Search..."
                 onChange={(e) => setSearch(e.target.value)}
                 type="text"
             />
             <SearchResults
+                className="border-primary bg-primary"
                 isOpen={search.length > 2}
             >
-                {results ? results.map(result => (
+                {results.length > 0 ? results.map(result => (
                     <SearchResult
                         key={result.id}
                         image={result.image}
@@ -56,9 +58,9 @@ const Searchbar: FC<{}> = () => {
                         price={result.price}
                         id={result.id}
                    />
-                )) : <p style={{padding: 10, textAlign: "center"}}>No results</p>}
+                )) : <ShowMore className="text-primary">No results</ShowMore>}
                 {results.length > 3 ? <Link href={`/search?q=${search}`}>
-                    <ShowMore>Show more</ShowMore>
+                    <ShowMore className="text-primary">Show more</ShowMore>
                 </Link> : null}
             </SearchResults>
         </SearchbarWrapper>
@@ -84,11 +86,10 @@ const SearchInput = styled.input<{isOpen: boolean}>`
 const SearchResults = styled.div<{isOpen: boolean}>`
     display: ${props => props.isOpen ? "block" : "none"};
     position: absolute;
-    background-color: #fff;
     z-index: 12;
     width: 100%;
     top: 47px;
-    border: 1px solid #DDDDDD;
+    border: 1px solid;
     border-top: none;
     left: 0;
     border-radius: ${props => props.isOpen ? "0 0 5px 5px" : "5px"};
@@ -107,7 +108,7 @@ const ShowMore = styled.a`
 const Result = styled.div`
     display: flex;
     padding: 10px;
-    border-bottom: 1px solid #F6F6F6;
+    border-bottom: 1px solid;
 `;
 
 const Image = styled.img`

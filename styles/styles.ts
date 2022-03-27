@@ -46,7 +46,6 @@ export const Page = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f6f6f6;
 `;
 
 export const Between = styled.div`

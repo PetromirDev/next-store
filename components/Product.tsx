@@ -16,7 +16,12 @@ const Product: FC<ProductType> = ({
     price, 
     name
 }) => {
-    const {setCart, user, setIsCartOpen} = useUserContext()
+    const {
+        setCart, 
+        user, 
+        setIsCartOpen
+    } = useUserContext();
+    
     return (
         <ProductWrapper>
             <ImageWrapper>
@@ -27,14 +32,14 @@ const Product: FC<ProductType> = ({
             <Body>
                 <Link href={`/product/${id}`}>
                     <div className="pointer">
-                        <Name>{name}</Name>
-                        <Price>$ {price/100}</Price>
+                        <Name className="text-primary">{name}</Name>
+                        <Price className="text-primary">$ {price/100}</Price>
                     </div>
                 </Link>
-                <Cart onClick={() => AddToCart(user.id, id, 1, setCart, image, price, name, setIsCartOpen)}>
+                <Cart onClick={() => AddToCart(user.id, id, 1, setCart, image, price, name, setIsCartOpen)} className="bg-highlighted">
                     <ShoppingBagIcon
                         sx={{
-                            color: '#fff',
+                            color: "white",
                             fontSize: '26px',
                         }}
                     />
@@ -83,7 +88,6 @@ const Cart = styled.div`
     padding: 12px;
     cursor: pointer;
     border-radius: 100%;
-    background-color: #0071E3;
     margin-left: 8px;
     display: flex;
     align-items: center;

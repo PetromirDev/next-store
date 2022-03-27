@@ -19,23 +19,23 @@ const CartItem:FC<CartItemType> = ({
     quantity,
     price
 }) => {
-    const {user, setCart} = useUserContext();
+    const {theme, user, setCart} = useUserContext();
 
     const iconStyle = {
         fontSize: 24,
-        color: "#000"
+        color: theme.textPrimary
     }
 
     return (
-        <CartItemWrapper>
-            <ImageWrapper>
+        <CartItemWrapper className="border-primary">
+            <ImageWrapper className="bg-secondary">
                 <Image
                     src={image}
                 />
             </ImageWrapper>
             <Body>
                 <Row>
-                    <Name>{name}</Name>
+                    <Name className="text-primary">{name}</Name>
                     <Close
                         onClick={() => RemoveItemFromCart(user.id, id, setCart)}
                         sx={iconStyle}
@@ -50,7 +50,7 @@ const CartItem:FC<CartItemType> = ({
                             onClick={() => UpdateCartItemQuantity(user.id, id, quantity, "decrement", setCart)}
                             sx={iconStyle}
                         />
-                        <Quantity>{quantity}</Quantity>
+                        <Quantity className="text-primary">{quantity}</Quantity>
                         <Plus
                             onClick={() => UpdateCartItemQuantity(user.id, id, quantity, "increment", setCart)}
                             sx={iconStyle}
@@ -74,7 +74,7 @@ const CartItemWrapper = styled.div`
     display: flex;
     width: 100%;
     padding: 10px 0;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid;
 `;
 
 const ImageWrapper = styled.div`
@@ -82,7 +82,6 @@ const ImageWrapper = styled.div`
     border-radius: 5px;
     width: 60px;
     height: 60px;
-    background-color: #F6F6F6;
     display: flex;
     justify-content: center;
     align-items: center;

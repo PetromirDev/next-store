@@ -4,3 +4,14 @@ export interface UserType {
     fName: string;
     lName: string;
 }
+
+export interface ThemeType {
+    bgPrimary: string;
+    bgSecondary: string;
+    textPrimary: string;
+    textSecondary: string;
+    textTertiary: string;
+    highlighted: string;
+    borderPrimary: string;
+    borderSecondary: string;
+}

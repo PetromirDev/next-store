@@ -32,10 +32,10 @@ const Search:NextPage = () => {
     }, [categories, priceRange])
 
     return (!isLoading ?
-        <Page>
+        <Page className="bg-secondary">
             <Navbar/>
             <PageContent>
-                <ResultsWrapper>
+                <ResultsWrapper className="bg-primary">
                     <Filters
                         categories={categories}
                         setCategories={setCategories}
@@ -69,7 +69,6 @@ const PageContent = styled(Center)`
 `;
 
 const ResultsWrapper = styled(Container)`
-    background-color: #fff;
     border-radius: 5px;
     padding: 20px;
     display: flex;

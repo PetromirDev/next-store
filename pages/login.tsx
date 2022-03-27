@@ -73,6 +73,7 @@ const login:NextPage = () => {
             onSubmit={handleSubmit}
         >
             <Input 
+                className="bg-primary text-secondary border-secondary"
                 name="email"
                 type="email" 
                 placeholder="Enter your email"
@@ -83,6 +84,7 @@ const login:NextPage = () => {
                 message={errors.email}
             />
             <Input 
+                className="bg-primary text-secondary border-secondary"
                 name="password"
                 type="password" 
                 placeholder="Enter your password"

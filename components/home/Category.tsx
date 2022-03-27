@@ -6,52 +6,22 @@ const Category:FC<{
     title: string;
     text: string;
     category: string;
-    imageSrc: string;
-    maxImageWidth: string;
-    maxImageHeight: string;
-    imageRight: string;
 }> = ({
     title, 
     text,
-    category,
-    imageSrc,
-    maxImageWidth,
-    maxImageHeight,
-    imageRight
+    category
 }) => {
     return (
         <Link href={`/search?categories=${category}`}>
-            <CategoryWrapper>
+            <CategoryWrapper className="bg-secondary">
                 <Body>
-                    <Title>{title}</Title>
-                    <Text>{text}</Text>
+                    <Title className="text-primary">{title}</Title>
+                    <Text className="text-secondary">{text}</Text>
                 </Body>
-                {/* <Image 
-                    src={imageSrc}
-                    maxImageWidth={maxImageWidth}
-                    maxImageHeight={maxImageHeight}
-                    imageRight={imageRight}
-                /> */}
             </CategoryWrapper>
         </Link>
     )
 }
-
-const Image = styled.img<{
-    maxImageWidth: string;
-    maxImageHeight: string;
-    imageRight: string;
-}>`
-    max-width: ${props => props.maxImageWidth};
-    max-height: ${props => props.maxImageHeight};
-    height: auto;
-    transform: rotate(4deg);
-    position: absolute;
-    right: ${props => props.imageRight};
-    justify-self: flex-end;
-    bottom: auto;
-    transition: .3s linear;
-`;
 
 const CategoryWrapper = styled.div`
     display: flex;
@@ -59,15 +29,12 @@ const CategoryWrapper = styled.div`
     justify-content: flex-start;
     padding: 40px;
     border-radius: 8px;
-    background-color: #F6F6F6;
     margin: 0 20px;
     max-width: 400px;
     width: 100%;
     position: relative;
     cursor: pointer;
-    &:hover > ${Image} {
-        bottom: 0;
-    }
+    flex: 1;
 `;
 
 const Body = styled.div`
@@ -83,7 +50,6 @@ const Title = styled.h2`
 
 const Text = styled.p`
     font-size: 1rem;
-    opacity: .6;
 `;
 
 

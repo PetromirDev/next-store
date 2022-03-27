@@ -1,17 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
+// Types
+import { ThemeType } from '../types/User';
  
-const GlobalStyle = createGlobalStyle<{
-    theme: {
-        backgroundColor: string;
-    }
-}>`
+const GlobalStyle = createGlobalStyle<{theme: ThemeType}>`
     html,
     body {
         padding: 0;
         margin: 0;
         font-family: "Roboto", sans-serif;
         font-size: 1em;
-        background-color: ${props => props.theme.backgroundColor};
+        background-color: ${props => props.theme.bgPrimary};
     }
 
     input {
@@ -61,9 +59,25 @@ const GlobalStyle = createGlobalStyle<{
         }
     }
 
-    .pointer {
-        cursor: pointer;
-    }
+    .pointer {cursor: pointer;}
+
+    .bg-primary {background-color: ${props => props.theme.bgPrimary};}
+
+    .bg-secondary {background-color: ${props => props.theme.bgSecondary};}
+
+    .text-primary {color: ${props => props.theme.textPrimary};}
+
+    .text-secondary {color: ${props => props.theme.textSecondary};}
+
+    .text-tertiary {color: ${props => props.theme.textTertiary};}
+
+    .border-primary {border-color: ${props => props.theme.borderPrimary};}
+
+    .border-secondary {border-color: ${props => props.theme.borderSecondary};}
+
+    .text-highlighted {color: ${props => props.theme.highlighted};}
+
+    .bg-highlighted {background-color: ${props => props.theme.highlighted};}
 `;
  
 export default GlobalStyle;

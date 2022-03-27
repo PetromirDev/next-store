@@ -24,12 +24,12 @@ const Auth:FC<{
     onSubmit
 }) => {
     return (
-        <Page>
+        <Page className="bg-secondary">
             <Navbar/>
             <AuthWrapper>
-                <AuthForm onSubmit={onSubmit}>
-                    <Title>{title}</Title>
-                    <Text>
+                <AuthForm onSubmit={onSubmit} className="bg-primary">
+                    <Title className="text-primary">{title}</Title>
+                    <Text className="text-primary">
                         {text} 
                         <Link href={linkUrl}>
                             <LinkColor> {linkText}</LinkColor>
@@ -53,7 +53,6 @@ const AuthWrapper = styled.div`
 
 const AuthForm = styled.form`
     border-radius: 5px;
-    background-color: #fff;
     padding: 30px;
     max-width: 550px;
     width: 100%;
@@ -75,7 +74,7 @@ const Text = styled.p`
     font-size: 1rem;
     font-weight: 400;
     color: rgba(0,0,0,0.38);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 `;
 
@@ -86,7 +85,7 @@ const LinkColor = styled.a`
 const SubmitButton = styled(PrimaryButton)`
     width: 100%;
     padding: 20px;
-    margin-top: 10px;
+    margin-top: 15px;
 `;
 
 export default Auth

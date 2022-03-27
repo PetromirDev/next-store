@@ -17,12 +17,13 @@ const Hero:FC<{
     image
 }) => {
     return(
-        <HeroWrapper>
-            <Body>
+        <HeroWrapper className="bg-secondary">
+            <Body> 
                 <HeroLeft>
-                    <Title>{title}</Title>
-                    <Text>{text}</Text>
+                    <Title className="text-primary">{title}</Title>
+                    <Text className="text-primary">{text}</Text>
                     <Link 
+                        className="text-highlighted"
                         href={linkUrl}
                     >
                         {linkText}
@@ -39,7 +40,6 @@ const Hero:FC<{
 }
 
 const HeroWrapper = styled.div`
-    background-color: #F6F6F6;
     padding-top: 80px;
 `;
 
@@ -71,7 +71,6 @@ const Text = styled.p`
 `;
 
 const Link = styled.a`
-    color: #0071E3;
     font-size: 1.2rem;
     display: block;
     text-transform: uppercase;

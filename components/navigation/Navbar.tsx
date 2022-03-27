@@ -12,18 +12,23 @@ import LightModeIcon from '@mui/icons-material/LightModeOutlined'; // Light Mode
 import Menu from "@mui/icons-material/Menu"; // Menu
 import Searchbar from './Searchbar';
 
-const Navbar:FC<{}> = () => {
-  const {setIsCartOpen} = useUserContext();
+const Navbar:FC = () => {
+  const {
+    theme, 
+    setTheme,
+    setIsCartOpen
+  } = useUserContext();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const iconStyle={fontSize: 30, color: theme.textPrimary}
 
   return (
-    <NavbarWrapper>
+    <NavbarWrapper className="border-primary bg-primary">
       <Navigation>
-        <NavigationLeft>
+        <NavigationLeft className="border-primary">
           {/* Logo */}
           <Link href="/">
             <a>
-              <Logo>TheTechShop</Logo>
+              <Logo className="text-primary">TheTechShop</Logo>
             </a>
           </Link>
           {/* Menu toggle */}
@@ -32,48 +37,32 @@ const Navbar:FC<{}> = () => {
             onClick={() => setIsMenuOpen(old => !old)}
           >
             <Menu
-              sx={{
-                fontSize: 30,
-                color: "#000"
-              }}
+              sx={iconStyle}
             />
           </MenuWrapper>
         </NavigationLeft>
-        <NavigationRight 
-          isOpen={isMenuOpen}
-        >
+        <NavigationRight isOpen={isMenuOpen} className="border-primary bg-primary">
           {/* Search bar */}
           <Searchbar/>
           <IconsWrapper>
             {/* Theme  */}
-            <IconWrapper>
+            <IconWrapper className="border-primary" onClick={() => setTheme((old) => old == "light" ? "dark" : "light")}>
               <LightModeIcon 
-                sx={{
-                  color: "#000", 
-                  fontSize: "30px"
-                }}
+                sx={iconStyle}
               />
             </IconWrapper>
             {/* Profile */}
             <Link href="/login">
-              <IconWrapper>
+              <IconWrapper className="border-primary">
                 <UserIcon 
-                  sx={{
-                    color: "#000", 
-                    fontSize: "30px"
-                  }}
+                  sx={iconStyle}
                 />
               </IconWrapper>
             </Link>
             {/* Cart */}
-            <IconWrapper 
-              onClick={() => setIsCartOpen(true)}
-            >
+            <IconWrapper className="border-primary" onClick={() => setIsCartOpen(true)}>
               <ShoppingBagIcon 
-                sx={{
-                  color: "#000", 
-                  fontSize: "30px"
-                }}
+                sx={iconStyle}
               />
             </IconWrapper>
           </IconsWrapper>
@@ -96,8 +85,7 @@ const Navigation = styled(Container)`
 `;
 
 const NavbarWrapper = styled.div`
-  border-bottom: 1px solid #DDDDDD;
-  background-color: #fff;
+  border-bottom: 1px solid;
   position: fixed;
   top: 0;
   left: 0;
@@ -115,7 +103,7 @@ const IconsWrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  border: 1px solid #DDDDDD;
+  border: 1px solid;
   padding: 9px;
   border-radius: 8px;
   display: flex;
@@ -131,7 +119,7 @@ const NavigationLeft = styled.div`
   justify-content: space-between;
   @media (max-width: 600px) {
     width: 100%;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid;
     padding: 15px 20px;
   }
 `;
@@ -144,8 +132,7 @@ const NavigationRight = styled.div<{isOpen: boolean}>`
   margin-left: 50px;
   @media (max-width: 600px) {
     position: fixed;
-    background-color:#fff;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid;
     top: ${props => props.isOpen ? "65px" : "-100%"};
     opacity: ${props => props.isOpen ? 1 : 0};
     flex-direction: column-reverse;

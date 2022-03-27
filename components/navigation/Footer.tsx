@@ -10,13 +10,13 @@ const Footer:FC<{}> = () => {
 }
 
 const FooterWrapper = styled.div`
-    background-color: #000;
     padding: 20px;
+    background-color: black;
 `;
 
 const Text = styled.p`
+    color: white;
     text-align: center;
-    color: #fff;
     font-size: 1.2rem;
     @media (max-width: 768px) {
         font-size: 1rem;

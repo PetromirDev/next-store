@@ -10,6 +10,7 @@ import Close from "@mui/icons-material/Close";
 
 const Cart:FC = () => {
     const {
+        theme,
         isCartOpen, 
         setIsCartOpen,
         cart,
@@ -51,14 +52,15 @@ const Cart:FC = () => {
     return (
         <CartWrapper
             isCartOpen={isCartOpen}
+            className="bg-primary"
         >
             <div>
-                <Header>
-                    <Title>Your cart</Title>
+                <Header className="border-primary">
+                    <Title className="text-primary">Your cart</Title>
                     <Close
                         sx={{
                             fontSize: 28,
-                            color: "#000"
+                            color: theme.textPrimary
                         }}
                         style={{
                             position: "absolute",
@@ -84,10 +86,10 @@ const Cart:FC = () => {
             </div>
             <Bottom>
                 <SubtotalWrapper>
-                    <SubtotalText>Subtotal</SubtotalText>
-                    <Subtotal>$ {cart.total/100}</Subtotal>
+                    <SubtotalText className="text-primary">Subtotal</SubtotalText>
+                    <Subtotal className="text-primary">$ {cart.total/100}</Subtotal>
                 </SubtotalWrapper>
-                <SubtotalSeparator/>
+                <SubtotalSeparator className="border-primary"/>
                 <CheckoutButton>Secure checkout</CheckoutButton>
             </Bottom>
 
@@ -107,7 +109,6 @@ const CartWrapper = styled.div<{isCartOpen: boolean}>`
     flex-direction: column;
     justify-content: space-between;
     position: fixed;
-    background-color: #fff;
     transform: translateX(${props => props.isCartOpen ? 0 : "100%"});
     transition: transform .3s ease-in-out;
 `;
@@ -117,7 +118,7 @@ const Header = styled.div`
     align-items: center;
     padding: 15px 20px;
     justify-content: center;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid;
     position: relative;
 `;
 
