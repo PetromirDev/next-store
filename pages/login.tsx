@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { NextPage } from "next"
 import { useRouter } from "next/router"
+import { NextPage } from "next"
 // Context
 import { useUserContext } from "../context/contextProvider"
 // Components
@@ -12,7 +12,7 @@ import { LoginType } from "../types/Auth"
 // Helpers
 import { validateLogin } from "../helpers/auth/validation"
 
-const login:NextPage = () => {
+const Login:NextPage = () => {
     const {setAuthToken} = useUserContext()
     const router = useRouter()
     const defaultValues = {
@@ -97,4 +97,4 @@ const login:NextPage = () => {
     )
 }
 
-export default login
+export default Login;

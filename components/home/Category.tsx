@@ -12,7 +12,7 @@ const Category:FC<{
     category
 }) => {
     return (
-        <Link href={`/search?categories=${category}`}>
+        <Link href={`/search?categories=${category}`} passHref>
             <CategoryWrapper className="bg-secondary">
                 <Body>
                     <Title className="text-primary">{title}</Title>

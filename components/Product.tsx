@@ -27,10 +27,11 @@ const Product: FC<ProductType> = ({
             <ImageWrapper>
                 <Image 
                     src={image}
+                    alt=""
                 />
             </ImageWrapper>
             <Body>
-                <Link href={`/product/${id}`}>
+                <Link href={`/product/${id}`} passHref>
                     <div className="pointer">
                         <Name className="text-primary">{name}</Name>
                         <Price className="text-primary">$ {price/100}</Price>

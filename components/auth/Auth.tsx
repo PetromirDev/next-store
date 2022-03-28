@@ -31,7 +31,7 @@ const Auth:FC<{
                     <Title className="text-primary">{title}</Title>
                     <Text className="text-secondary">
                         {text} 
-                        <Link href={linkUrl}>
+                        <Link href={linkUrl} passHref>
                             <LinkColor> {linkText}</LinkColor>
                         </Link>
                     </Text>

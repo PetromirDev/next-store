@@ -10,7 +10,7 @@ const SearchResult:FC<{
     id: number;
 }> = ({image, name, price, id}) => {
     return (
-        <Link href={`/product/${id}`}>
+        <Link href={`/product/${id}`} passHref>
             <Result className="pointer border-secondary">
                 <Image
                     alt=""
@@ -59,7 +59,7 @@ const Searchbar: FC<{}> = () => {
                         id={result.id}
                    />
                 )) : <ShowMore className="text-primary">No results</ShowMore>}
-                {results.length > 3 ? <Link href={`/search?q=${search}`}>
+                {results.length > 3 ? <Link href={`/search?q=${search}`} passHref>
                     <ShowMore className="text-primary">Show more</ShowMore>
                 </Link> : null}
             </SearchResults>

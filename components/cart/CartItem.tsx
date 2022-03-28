@@ -31,6 +31,7 @@ const CartItem:FC<CartItemType> = ({
             <ImageWrapper className="bg-secondary">
                 <Image
                     src={image}
+                    alt=""
                 />
             </ImageWrapper>
             <Body>

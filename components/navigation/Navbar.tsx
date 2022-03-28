@@ -52,7 +52,7 @@ const Navbar:FC = () => {
               />
             </IconWrapper>
             {/* Profile */}
-            <Link href="/login">
+            <Link href="/login" passHref>
               <IconWrapper className="border-primary">
                 <UserIcon 
                   sx={iconStyle}

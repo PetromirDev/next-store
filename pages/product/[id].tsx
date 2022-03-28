@@ -60,7 +60,7 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
                                 </Column>
                             </ProductRight>
                         </ProductBody>
-                        <Link href="/">
+                        <Link href="/" passHref>
                             <BackLink className="text-tertiary">Back</BackLink>
                         </Link>
                     </ProductWrapper>

@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from "react"
-import { NextPage } from "next"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
+import { NextPage } from "next"
 // Components
 import Auth from "../components/auth/Auth"
 import { Column, Input, Row, RowInput } from "../components/auth/authStyles"
@@ -9,7 +9,7 @@ import { validateRegister } from "../helpers/auth/validation"
 // Types
 import { RegisterType } from "../types/Auth"
 
-const register:NextPage = () => {
+const Register:NextPage = () => {
     const router = useRouter()
     const defaultValues = {
         fName: "",
@@ -147,4 +147,4 @@ const register:NextPage = () => {
     )
 }
 
-export default register
+export default Register;
