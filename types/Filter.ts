@@ -1,15 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
 
-export interface FilterType {
+export type FilterType = {
     name: string; 
     value: string;
     checked: boolean;
 }
 
-export interface FilterComponentType {
+export type FilterComponentType = {
     name: string; 
     value: string;
     checked: boolean;
-    // index: number;
     setFilter: Dispatch<SetStateAction<string[]>>;
 }

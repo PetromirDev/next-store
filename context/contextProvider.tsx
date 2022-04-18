@@ -6,15 +6,15 @@ import { themes } from "../helpers/static/themes";
 import { CartType } from "../types/Cart";
 import { ThemeType, UserType } from "../types/User";
 
-interface ContextType {
-    theme: ThemeType,
-    setTheme: Dispatch<SetStateAction<"light" | "dark">>,
+type ContextType = {
+    theme: ThemeType;
+    setTheme: Dispatch<SetStateAction<"light" | "dark">>;
     isCartOpen: boolean;
     setIsCartOpen: (isCartOpen: boolean) => void;
     cart: CartType;
     setCart: Dispatch<SetStateAction<CartType>>;
     setAuthToken: Dispatch<SetStateAction<string>>;
-    user: UserType;
+    user: UserType | null;
 }
 
 const UserContext = createContext<ContextType>({} as ContextType);
@@ -23,7 +23,7 @@ const UserProvider:FC<{children?: JSX.Element | JSX.Element[]}> = ({children}) =
     const [theme, setTheme] = useState<keyof typeof themes>("light");
     const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
     const [cart, setCart] = useState<CartType>({items: [], total: 0});
-    const [user, setUser] = useState<UserType>({} as UserType)
+    const [user, setUser] = useState<UserType | null>(null);
     const [authToken, setAuthToken] = useState<string>(() => {
         // Getting token from local storage
         if(typeof window !== 'undefined'){

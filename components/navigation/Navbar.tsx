@@ -1,25 +1,23 @@
-import { FC, useState } from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-// Context 
-import { useUserContext } from '../../context/contextProvider';
+import { FC, useState } from "react";
+import styled from "styled-components";
+import Link from "next/link";
+// Context
+import { useUserContext } from "../../context/contextProvider";
+// Components
+import Searchbar from "./Searchbar"; // Searchbar
 // Styles
-import { Container } from '../../styles/styles';
+import { Container } from "../../styles/styles";
 // Icons
-import ShoppingBagIcon from '@mui/icons-material/LocalMallOutlined'; // Shopping bag
-import UserIcon from '@mui/icons-material/AccountCircleOutlined'; // User
-import LightModeIcon from '@mui/icons-material/LightModeOutlined'; // Light Mode
+import ShoppingBagIcon from "@mui/icons-material/LocalMallOutlined"; // Shopping bag
+import UserIcon from "@mui/icons-material/AccountCircleOutlined"; // User
+import LightModeIcon from "@mui/icons-material/LightModeOutlined"; // Light Mode
+import LoginOutlined from "@mui/icons-material/LoginOutlined"; // Login
 import Menu from "@mui/icons-material/Menu"; // Menu
-import Searchbar from './Searchbar';
 
-const Navbar:FC = () => {
-  const {
-    theme, 
-    setTheme,
-    setIsCartOpen
-  } = useUserContext();
+const Navbar: FC = () => {
+  const { user, theme, setTheme, setIsCartOpen } = useUserContext();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const iconStyle={fontSize: 30, color: theme.textPrimary}
+  const iconStyle = { fontSize: 30, color: theme.textPrimary };
 
   return (
     <NavbarWrapper className="border-primary bg-primary">
@@ -34,44 +32,57 @@ const Navbar:FC = () => {
           {/* Menu toggle */}
           <MenuWrapper
             isOpen={isMenuOpen}
-            onClick={() => setIsMenuOpen(old => !old)}
+            onClick={() => setIsMenuOpen((old) => !old)}
           >
-            <Menu
-              sx={iconStyle}
-            />
+            <Menu sx={iconStyle} />
           </MenuWrapper>
         </NavigationLeft>
-        <NavigationRight isOpen={isMenuOpen} className="border-primary bg-primary">
+        <NavigationRight
+          isOpen={isMenuOpen}
+          className="border-primary bg-primary"
+        >
           {/* Search bar */}
-          <Searchbar/>
+          <Searchbar />
           <IconsWrapper>
             {/* Theme  */}
-            <IconWrapper className="border-primary" onClick={() => setTheme((old) => old == "light" ? "dark" : "light")}>
-              <LightModeIcon 
-                sx={iconStyle}
-              />
+            <IconWrapper
+              className="border-primary"
+              onClick={() =>
+                setTheme((old) => (old == "light" ? "dark" : "light"))
+              }
+            >
+              <LightModeIcon sx={iconStyle} />
             </IconWrapper>
             {/* Profile */}
-            <Link href="/login" passHref>
-              <IconWrapper className="border-primary">
-                <UserIcon 
-                  sx={iconStyle}
-                />
-              </IconWrapper>
-            </Link>
+            {user ? (
+              <Link href="/profile" passHref>
+                <IconWrapper className="border-primary">
+                  <UserIcon sx={iconStyle} />
+                </IconWrapper>
+              </Link>
+            ) : (
+              <Link href="/login" passHref>
+                <IconWrapper className="border-primary">
+                  <LoginOutlined sx={iconStyle} />
+                </IconWrapper>
+              </Link>
+            )}
+
             {/* Cart */}
-            <IconWrapper className="border-primary" onClick={() => setIsCartOpen(true)}>
-              <ShoppingBagIcon 
-                sx={iconStyle}
-              />
-            </IconWrapper>
+            {user ? (
+              <IconWrapper
+                className="border-primary"
+                onClick={() => setIsCartOpen(true)}
+              >
+                <ShoppingBagIcon sx={iconStyle} />
+              </IconWrapper>
+            ) : null}
           </IconsWrapper>
         </NavigationRight>
-
       </Navigation>
     </NavbarWrapper>
-  )
-}
+  );
+};
 
 const Navigation = styled(Container)`
   padding: 20px;
@@ -114,7 +125,7 @@ const IconWrapper = styled.div`
 `;
 
 const NavigationLeft = styled.div`
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: space-between;
   @media (max-width: 600px) {
@@ -124,7 +135,7 @@ const NavigationLeft = styled.div`
   }
 `;
 
-const NavigationRight = styled.div<{isOpen: boolean}>`
+const NavigationRight = styled.div<{ isOpen: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,8 +144,8 @@ const NavigationRight = styled.div<{isOpen: boolean}>`
   @media (max-width: 600px) {
     position: fixed;
     border-bottom: 1px solid;
-    top: ${props => props.isOpen ? "65px" : "-100%"};
-    opacity: ${props => props.isOpen ? 1 : 0};
+    top: ${(props) => (props.isOpen ? "65px" : "-100%")};
+    opacity: ${(props) => (props.isOpen ? 1 : 0)};
     flex-direction: column-reverse;
     align-items: center;
     margin-left: 0;
@@ -142,13 +153,13 @@ const NavigationRight = styled.div<{isOpen: boolean}>`
     padding: 20px;
     padding-top: 10px;
     transition: top 0.3s ease-in-out, opacity 0.3s ease-in;
-    ${IconWrapper}{
+    ${IconWrapper} {
       margin-left: 0;
       &:nth-child(2) {
         margin: 0 10px;
       }
     }
-    ${IconsWrapper}{
+    ${IconsWrapper} {
       margin-bottom: 10px;
       width: 100%;
       justify-content: flex-end;
@@ -156,11 +167,11 @@ const NavigationRight = styled.div<{isOpen: boolean}>`
   }
 `;
 
-const MenuWrapper = styled.div<{isOpen: boolean}>`
+const MenuWrapper = styled.div<{ isOpen: boolean }>`
   display: none;
   @media (max-width: 600px) {
     display: block;
   }
-`
+`;
 
-export default Navbar
+export default Navbar;

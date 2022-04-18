@@ -19,18 +19,20 @@ const Cart:FC = () => {
     } = useUserContext();
 
     const getCartItems = useCallback(() => {
-        fetch(`/api/cart?uid=${user.id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json()).then(data => setCart(old => {
-            return {
-                ...old, 
-                items: data
-            }
-        }))
-    }, [user.id])
+        if(user !== null) {
+            fetch(`/api/cart?uid=${user.id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res => res.json()).then(data => setCart(old => {
+                return {
+                    ...old, 
+                    items: data
+                }
+            }))
+        }
+    }, [user])
 
     useEffect(() => {
         getCartItems()
@@ -48,6 +50,12 @@ const Cart:FC = () => {
             })
         })
     }, [cart.items])
+
+    const handleCheckout = () => {
+        if(user !== null) {
+            alert("Thank you for coming to my website!")
+        }
+    }
 
     return (
         <CartWrapper
@@ -90,7 +98,7 @@ const Cart:FC = () => {
                     <Subtotal className="text-primary">$ {cart.total/100}</Subtotal>
                 </SubtotalWrapper>
                 <SubtotalSeparator className="bg-secondary"/>
-                <CheckoutButton>Secure checkout</CheckoutButton>
+                <CheckoutButton onClick={handleCheckout}>Secure checkout</CheckoutButton>
             </Bottom>
 
         </CartWrapper>

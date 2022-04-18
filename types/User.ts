@@ -1,11 +1,12 @@
-export interface UserType {
+export type UserType = {
     id: number;
     email: string;
     fName: string;
     lName: string;
+    photoURL: string;
 }
 
-export interface ThemeType {
+export type ThemeType = {
     bgPrimary: string;
     bgSecondary: string;
     textPrimary: string;

@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import sqlite3 from 'sqlite3';
 import {open} from 'sqlite';
 
-interface ResponseType {
+type ResponseType = {
   id: number;
   name: string;
   description: string;
@@ -14,7 +14,7 @@ interface ResponseType {
   category: string;
 }
 
-interface RequestType {
+type RequestType = {
   categories: string[],
   min: number;
   max: number;

@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome to my NextJS shop
 
-## Getting Started
+## Project idea
 
-First, run the development server:
+This is a simple learning project that I made with the intention to get into TypeScript. It's a simple shop, using which you can:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1. Register
+2. Login
+3. Browse and filter products
+4. Search for products
+5. Add products to cart
+6. Change website theme
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Front-end
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+For the front-end I'm using [NextJS](https://nextjs.org/) with styled-components for the styles and TypeScript.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Back-end
 
-## Learn More
+For the back-end I'm using NextJS's [API Routes](https://nextjs.org/docs/api-routes/introduction).
 
-To learn more about Next.js, take a look at the following resources:
+1. Validation- [Joi](https://github.com/sideway/joi)
+2. Database - [Sqlite](https://www.npmjs.com/package/sqlite3)
+3. Password hashing - [Bcrypt](https://www.npmjs.com/package/bcrypt)
+4. Sessions - [JWT](https://github.com/auth0/node-jsonwebtoken)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Why did I choose that specific tech stack?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Front-end
 
-## Deploy on Vercel
+Well, firstly I'm a ReactJS developer and this project was made with the intention for me to learn TypeScript. Then I chose styled-components, because I like the flexibility it gives me while writing CSS and at the same time both the logic and the style is in the same file, which makes it easy to read and understand.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Back-end
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I chose [API Routes](https://nextjs.org/docs/api-routes/introduction), since it's already integrated into NextJS and at the same time I don't have a lot of requirements, since the project was not meant to scale. Then for the database I chose Sqlite, since I only need a small database.
+
+## Front-end 
+
+### File structure
+
+1. Components - `/components`
+2. Context API - `/context`
+3. Styles - `/styles`
+4. Pages - `/pages`
+5. Types - `/types`
+
+## Back-end 
+
+### File structure
+
+1. API routes - `/pages/api`
+2. Migrations - `/migrations`
+3. Initial - `./database.js`
+4. Database - `./database.sqlite`
+
+### Server status codes
+
+1. `success` - The operation was successful
+2. `db-error` - There was an error in the database
+3. `{something}-exists` - The thing we are trying to add already exists in the database
+4. `invalid-data` - The data we are providing does not match the required data
+5. `invalid-email` - There is no such user
+6. `invalid-password` - User exists, but the password is wrong
+7. `updated` - Databse item updated
+8. `deleted` - Database item deleted
+
+

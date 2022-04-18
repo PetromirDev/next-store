@@ -25,7 +25,7 @@ const LoginRoute = async (
       // Sending the JWT
       let validity = "1d";
 
-      const token = jwt.sign({id: user.id, fName: user.fName, lName: user.lName, email: user.email}, process.env.JWT_SECRET as string, { expiresIn: validity});
+      const token = jwt.sign({id: user.id, fName: user.fName, lName: user.lName, email: user.email, photoURL: user.photoURL}, process.env.JWT_SECRET as string, { expiresIn: validity});
       res.setHeader("Access-Control-Expose-Headers","auth-token")
       return res.status(200).setHeader('auth-token', token).json({message: "success"})
     } else return res.status(500).json({message: "invalid-method"})

@@ -25,6 +25,14 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
     const [quantity, setQuantity] = useState<number>(1)
     const {image, price, name, description, id} = data;
     
+    const handleAddToCart = () => {
+        if(user !== null) {
+            AddToCart(user.id, id, quantity, setCart, image, price, name, setIsCartOpen).then(() => setQuantity(1))
+        } else {
+            alert("You must be logged in to add to cart")
+        }
+    }
+
     return (
         <div>
             <Page className="bg-secondary">
@@ -56,7 +64,7 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
                                         </QuantityWrapper>
                                         <Price className="text-secondary">$ {price * quantity / 100}</Price>
                                     </PriceWrapper>
-                                    <AddToCartButton onClick={() => AddToCart(user.id, id, quantity, setCart, image, price, name, setIsCartOpen).then(() => setQuantity(1))}>Add to cart</AddToCartButton>
+                                    <AddToCartButton onClick={handleAddToCart}>Add to cart</AddToCartButton>
                                 </Column>
                             </ProductRight>
                         </ProductBody>
@@ -75,7 +83,7 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
 
 export const getServerSideProps:GetServerSideProps = async({params, query}) => {
     //@ts-ignore
-    const data = await fetch(`https://next-store-fqtnyzi3g-pgameplay.vercel.app/api/products/${params.id}`).then(res => res.json())
+    const data = await fetch(`http://localhost:3000/api/products/${params.id}`).then(res => res.json())
     
     return {
         props : {

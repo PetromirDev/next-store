@@ -26,7 +26,7 @@ const Search:NextPage = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://next-store-fqtnyzi3g-pgameplay.vercel.app/api/products?q=${query.q}&categories=${categories}&min=${priceRange.min * 100}&max=${priceRange.max * 100}`).then(res => res.json()).then(data => {
+        fetch(`http://localhost:3000/api/products?q=${query.q}&categories=${categories}&min=${priceRange.min * 100}&max=${priceRange.max * 100}`).then(res => res.json()).then(data => {
             setProducts(data);
         }).then(() => setIsLoading(false))
     }, [categories, priceRange])

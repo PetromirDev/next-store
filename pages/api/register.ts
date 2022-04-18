@@ -14,12 +14,10 @@ const userModel = Joi.object({
     password: Joi.string()
         .required(),
     fName: Joi.string()
-        .alphanum()
         .min(2)
         .max(20)
         .required(),
     lName: Joi.string()
-        .alphanum()
         .min(2)
         .max(20)
         .required()
@@ -46,10 +44,12 @@ const RegisterRoute = async (
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(input.password, salt);
     // Registering the user
+    const photoURL = await fetch(`https://avatars.dicebear.com/api/male/:${String(Math.random() * 100)}.svg?mood[]=happy`).then(res => res.url);
+    console.log(photoURL)
     try{
         await db.run(
-            "INSERT INTO user (fName, lName, email, password, created) VALUES (?, ?, ?, ?, ?)", 
-            input.fName, input.lName, email, hashedPassword, Date.now()
+            "INSERT INTO user (fName, lName, email, password, created, photoURL) VALUES (?, ?, ?, ?, ?, ?)", 
+            input.fName, input.lName, email, hashedPassword, Date.now(), photoURL
         );
         return res.status(200).send({message: "success"})
     } catch (err){

@@ -37,7 +37,7 @@ const Filters:FC<{
     return (    
         <FiltersWrapper>
             <FiltersTop>
-                <FilterTitle>Filter products by</FilterTitle>
+                <FilterTitle color={theme.textPrimary}>Filter products by</FilterTitle>
                 <FilterIconWrapper onClick={() => setIsOpen(old => !old)}>
                     <FilterIcon 
                         sx={{
@@ -49,7 +49,7 @@ const Filters:FC<{
             </FiltersTop>
             <FiltersBottom isOpen={isOpen}>
                 <FilterWrapper>
-                    <FilterName>Category</FilterName>
+                    <FilterName color={theme.textPrimary}>Category</FilterName>
                     {categoryLabels.map((category, index) => (
                         <CheckboxFilter
                             key={index}
@@ -61,7 +61,7 @@ const Filters:FC<{
                     ))}
                 </FilterWrapper>
                 <FilterWrapper>
-                    <FilterName>Price range</FilterName>
+                    <FilterName color={theme.textPrimary}>Price range</FilterName>
                     <PriceFilter>
                         <Input
                             placeholder="0"
@@ -83,9 +83,10 @@ const Filters:FC<{
     )
 }
 
-const FilterTitle = styled.h2`
+const FilterTitle = styled.h2<{color: string;}>`
     font-size: 1.5rem;
     font-weight: 500;
+    color: ${props => props.color};
 `;
 
 const FiltersWrapper = styled.div`
@@ -117,11 +118,12 @@ const FiltersBottom = styled.div<{ isOpen: boolean }>`
     }
 `;
 
-const FilterName = styled.h3`
+const FilterName = styled.h3<{color: string;}>`
     font-size: 1.2rem;
     font-weight: 400;
     margin-top: 20px;
     margin-bottom: 10px;
+    color: ${props => props.color};
 `;
 
 const Dash = styled.p`

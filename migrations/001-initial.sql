@@ -5,7 +5,8 @@ CREATE TABLE User (
     lName TEXT,
     email TEXT UNIQUE,
     password TEXT,
-    created TEXT
+    created TEXT,
+    photoURL TEXT
 );
 
 CREATE TABLE Product (

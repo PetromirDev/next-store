@@ -1,9 +1,9 @@
-export interface LoginType {
+export type LoginType = {
     email: string;
     password: string;
 }
 
-export interface RegisterType {
+export type RegisterType = {
     fName: string;
     lName: string;
     email: string;

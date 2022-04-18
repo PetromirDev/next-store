@@ -71,7 +71,7 @@ const Home: NextPage<{data: ProductType[]}> = ({data}) => {
 }
 
 export const getServerSideProps:GetServerSideProps = async() => {
-  const res = await fetch('https://next-store-fqtnyzi3g-pgameplay.vercel.app/api/products');
+  const res = await fetch('http://localhost:3000/api/products');
   const data = await res.json();
   
   return {

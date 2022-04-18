@@ -1,4 +1,4 @@
-export interface CartItemType {    
+export type CartItemType = {    
     id: number;
     pid: number;
     name: string;
@@ -7,7 +7,7 @@ export interface CartItemType {
     quantity: number;
 }
 
-export interface CartType {
+export type CartType = {
     items: Array<CartItemType>;
     total: number;
 }

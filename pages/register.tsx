@@ -45,7 +45,7 @@ const Register:NextPage = () => {
     const handleRegister = () => {
         const {["repeatPassword"]: unused, ...body} = values;
 
-        fetch("https://next-store-fqtnyzi3g-pgameplay.vercel.app/api/register", {
+        fetch("http://localhost:3000/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

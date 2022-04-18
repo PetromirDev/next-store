@@ -1,4 +1,6 @@
 import styled from "styled-components"
+// CONTEXT API
+import { useUserContext } from "../../context/contextProvider"
 // Types
 import { FilterComponentType } from "../../types/Filter"
 
@@ -7,8 +9,8 @@ const CheckboxFilter = ({
     value, 
     checked, 
     setFilter, 
-    // index
 }:FilterComponentType) => {
+    const {theme} = useUserContext();
     const handleChange = () => {
         setFilter(old => {
             if(old.includes(value)) {
@@ -28,7 +30,7 @@ const CheckboxFilter = ({
                 checked={checked}
                 onChange={handleChange}
             />
-            <Label>{name}</Label>
+            <Label color={theme.textSecondary}>{name}</Label>
         </CheckboxWrapper>
     )
 }
@@ -37,9 +39,10 @@ const CheckboxWrapper = styled.div`
     padding: 2.5px;
 `;
 
-const Label = styled.label`
+const Label = styled.label<{color: string;}>`
     font-size: 1rem;
     margin-left: 5px;
+    color: ${props => props.color};
 `;
 
 export default CheckboxFilter

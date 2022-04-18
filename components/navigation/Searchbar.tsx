@@ -32,7 +32,7 @@ const Searchbar: FC<{}> = () => {
 
     useEffect(() => {
         if(search.length > 2){
-            fetch(`https://next-store-fqtnyzi3g-pgameplay.vercel.app/api/products?q=${search}&limit=3`).then(res => res.json()).then(data => {
+            fetch(`http://localhost:3000/api/products?q=${search}&limit=3`).then(res => res.json()).then(data => {
                 setResults(data)
             })
         }
