@@ -4,7 +4,7 @@ import { CartType } from "../../types/Cart"
 
 export const AddToCart = (uid: number, pid: number, quantity: number, setCart: Dispatch<SetStateAction<CartType>>, image: string, price: number, name: string, setIsCartOpen: (isCartOpen: boolean) => void) => new Promise<{id: number}>(async(resolve, reject) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/cart`, {
+        const response = await fetch(`/api/cart`, {
             method: "POST",
             headers:{
                 "Content-Type": "application/json"
@@ -57,7 +57,7 @@ export const UpdateCartItemQuantity = (uid: number, id: number, quantity: number
     if(quantity == 1 && type == "decrement") return;
     else {
         try {
-            const response = await fetch(`http://localhost:3000/api/cart`, {
+            const response = await fetch(`/api/cart`, {
                 method: "PUT",
                 headers:{
                     "Content-Type": "application/json"
@@ -80,7 +80,7 @@ export const UpdateCartItemQuantity = (uid: number, id: number, quantity: number
 
 export const RemoveItemFromCart = (uid: number, id: number, setCart: Dispatch<SetStateAction<CartType>>) => new Promise(async(resolve, reject) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/cart`, {
+        const response = await fetch(`/api/cart`, {
             method: "DELETE",
             headers:{
                 "Content-Type": "application/json"

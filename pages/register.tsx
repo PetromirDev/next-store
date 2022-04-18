@@ -45,7 +45,7 @@ const Register:NextPage = () => {
     const handleRegister = () => {
         const {["repeatPassword"]: unused, ...body} = values;
 
-        fetch("http://localhost:3000/api/register", {
+        fetch("/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

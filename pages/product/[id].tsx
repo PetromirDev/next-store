@@ -83,7 +83,7 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
 
 export const getServerSideProps:GetServerSideProps = async({params, query}) => {
     //@ts-ignore
-    const data = await fetch(`http://localhost:3000/api/products/${params.id}`).then(res => res.json())
+    const data = await fetch(`/api/products/${params.id}`).then(res => res.json())
     
     return {
         props : {
