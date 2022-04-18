@@ -1,5 +1,17 @@
 # Welcome to my NextJS shop
 
+❗❗❗DISCLAIMER❗❗❗
+
+The project is currently not working in Vercel, so you must download it locally. 
+
+NodeJS version: v16.13.1
+
+## Installation
+
+1. You must install NodeJS v16.13.1
+2. Run `npm install --save --save-dev` in the project root folder
+3. Run `npm run dev` to start the development environment
+
 ## Project idea
 
 This is a simple learning project that I made with the intention to get into TypeScript. It's a simple shop, using which you can:
