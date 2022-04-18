@@ -22,6 +22,14 @@ const Product: FC<ProductType> = ({
         setIsCartOpen
     } = useUserContext();
     
+    const handleAddToCart = () => {
+        if(user !== null) {
+            AddToCart(user.id, id, 1, setCart, image, price, name, setIsCartOpen)
+        } else {
+            alert("You must be logged in to add to cart")
+        }
+    }
+
     return (
         <ProductWrapper>
             <ImageWrapper>
@@ -37,7 +45,7 @@ const Product: FC<ProductType> = ({
                         <Price className="text-primary">$ {price/100}</Price>
                     </div>
                 </Link>
-                <Cart onClick={() => AddToCart(user.id, id, 1, setCart, image, price, name, setIsCartOpen)} className="bg-highlighted">
+                <Cart onClick={handleAddToCart} className="bg-highlighted">
                     <ShoppingBagIcon
                         sx={{
                             color: "white",
