@@ -24,14 +24,6 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
     } = useUserContext();
     const [quantity, setQuantity] = useState<number>(1)
     const {image, price, name, description, id} = data;
-    
-    const handleAddToCart = () => {
-        if(user !== null) {
-            AddToCart(user.id, id, quantity, setCart, image, price, name, setIsCartOpen).then(() => setQuantity(1))
-        } else {
-            alert("You must be logged in to add to cart")
-        }
-    }
 
     return (
         <div>
@@ -64,7 +56,7 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
                                         </QuantityWrapper>
                                         <Price className="text-secondary">$ {price * quantity / 100}</Price>
                                     </PriceWrapper>
-                                    <AddToCartButton onClick={handleAddToCart}>Add to cart</AddToCartButton>
+                                    <AddToCartButton onClick={() => AddToCart(user, id, quantity, setCart, image, price, name, setIsCartOpen).then(() => setQuantity(1))}>Add to cart</AddToCartButton>
                                 </Column>
                             </ProductRight>
                         </ProductBody>

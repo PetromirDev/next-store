@@ -38,7 +38,7 @@ const CartItem:FC<CartItemType> = ({
                 <Row>
                     <Name className="text-primary">{name}</Name>
                     <Close
-                        onClick={() => RemoveItemFromCart(user.id, id, setCart)}
+                        onClick={() => RemoveItemFromCart(user, id, setCart)}
                         sx={iconStyle}
                         style={{
                             marginLeft: "auto"
@@ -48,12 +48,12 @@ const CartItem:FC<CartItemType> = ({
                 <Row>
                     <QuantityWrapper>
                         <Minus 
-                            onClick={() => UpdateCartItemQuantity(user.id, id, quantity, "decrement", setCart)}
+                            onClick={() => UpdateCartItemQuantity(user, id, quantity, "decrement", setCart)}
                             sx={iconStyle}
                         />
                         <Quantity className="text-primary">{quantity}</Quantity>
                         <Plus
-                            onClick={() => UpdateCartItemQuantity(user.id, id, quantity, "increment", setCart)}
+                            onClick={() => UpdateCartItemQuantity(user, id, quantity, "increment", setCart)}
                             sx={iconStyle}
                         />
                     </QuantityWrapper>
