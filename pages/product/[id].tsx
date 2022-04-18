@@ -10,6 +10,7 @@ import Navbar from "../../components/navigation/Navbar"
 import { Between, Center, Page, PrimaryButton } from "../../styles/styles"
 // Helpers
 import { AddToCart } from "../../helpers/cart/cart"
+import { server_url } from "../../server-config"
 // Types
 import { ProductType } from "../../types/Product"
 import Remove from "@mui/icons-material/Remove"
@@ -75,7 +76,7 @@ const Product:NextPage<{data: ProductType}> = ({data}) => {
 
 export const getServerSideProps:GetServerSideProps = async({params, query}) => {
     //@ts-ignore
-    const data = await fetch(`/api/products/${params.id}`).then(res => res.json())
+    const data = await fetch(`${server_url}/products/${params.id}`).then(res => res.json())
     
     return {
         props : {

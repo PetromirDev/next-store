@@ -6,6 +6,8 @@ import Auth from "../components/auth/Auth"
 import { Column, Input, Row, RowInput } from "../components/auth/authStyles"
 import Error from "../components/auth/Error"
 import { validateRegister } from "../helpers/auth/validation"
+// Helpers
+import { server_url } from "../server-config"
 // Types
 import { RegisterType } from "../types/Auth"
 
@@ -45,7 +47,7 @@ const Register:NextPage = () => {
     const handleRegister = () => {
         const {["repeatPassword"]: unused, ...body} = values;
 
-        fetch("/api/register", {
+        fetch(`${server_url}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -8,6 +8,8 @@ import Footer from "../components/navigation/Footer";
 import Navbar from "../components/navigation/Navbar";
 import Product from "../components/Product";
 import { Center, Container, Page } from "../styles/styles";
+// Helpers
+import { server_url } from "../server-config";
 // Types
 import { ProductType } from "../types/Product";
 
@@ -26,7 +28,7 @@ const Search:NextPage = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`/api/products?q=${query.q}&categories=${categories}&min=${priceRange.min * 100}&max=${priceRange.max * 100}`).then(res => res.json()).then(data => {
+        fetch(`${server_url}/products?q=${query.q}&categories=${categories}&min=${priceRange.min * 100}&max=${priceRange.max * 100}`).then(res => res.json()).then(data => {
             setProducts(data);
         }).then(() => setIsLoading(false))
     }, [categories, priceRange])

@@ -7,6 +7,8 @@ import { PrimaryButton, Separator } from "../../styles/styles";
 import CartItem from "./CartItem";
 // Icons
 import Close from "@mui/icons-material/Close";
+// Helpers
+import { server_url } from "../../server-config";
 
 const Cart:FC = () => {
     const {
@@ -20,7 +22,7 @@ const Cart:FC = () => {
 
     const getCartItems = useCallback(() => {
         if(user !== null) {
-            fetch(`/api/cart?uid=${user.id}`, {
+            fetch(`${server_url}/cart?uid=${user.id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"

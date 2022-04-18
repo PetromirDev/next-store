@@ -1,5 +1,7 @@
-// Types
 import { Dispatch, SetStateAction } from "react"
+// Helpers
+import { server_url } from "../../server-config";
+// Types
 import { CartType } from "../../types/Cart"
 import { UserType } from "../../types/User"
 
@@ -7,7 +9,7 @@ export const AddToCart = (user: UserType | null, pid: number, quantity: number, 
     if(user !== null) {
         const uid = user.id;
         try {
-            const response = await fetch(`/api/cart`, {
+            const response = await fetch(`${server_url}/cart`, {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json"
@@ -65,7 +67,7 @@ export const UpdateCartItemQuantity = (user: UserType | null, id: number, quanti
         if(user !== null) {
             const uid = user.id;
             try {
-                const response = await fetch(`/api/cart`, {
+                const response = await fetch(`${server_url}/cart`, {
                     method: "PUT",
                     headers:{
                         "Content-Type": "application/json"
@@ -93,7 +95,7 @@ export const RemoveItemFromCart = (user: UserType | null, id: number, setCart: D
     if(user !== null) {
         const uid = user.id;
         try {
-            const response = await fetch(`/api/cart`, {
+            const response = await fetch(`${server_url}/cart`, {
                 method: "DELETE",
                 headers:{
                     "Content-Type": "application/json"

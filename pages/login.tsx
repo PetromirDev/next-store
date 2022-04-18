@@ -11,6 +11,7 @@ import Error from "../components/auth/Error"
 import { LoginType } from "../types/Auth"
 // Helpers
 import { validateLogin } from "../helpers/auth/validation"
+import { server_url } from "../server-config"
 
 const Login:NextPage = () => {
     const {setAuthToken} = useUserContext()
@@ -42,7 +43,7 @@ const Login:NextPage = () => {
 
     useEffect(() => {
         if(isSubmit && JSON.stringify(errors) == JSON.stringify(defaultValues)) {
-            fetch("/api/login", {
+            fetch(`${server_url}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

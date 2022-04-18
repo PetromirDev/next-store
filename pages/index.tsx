@@ -10,6 +10,8 @@ import { Container, Separator } from '../styles/styles'
 import Footer from '../components/navigation/Footer'
 // Types
 import { ProductType } from '../types/Product'
+// Helpers
+import { server_url } from '../server-config'
 
 const categories = [
   {
@@ -71,7 +73,7 @@ const Home: NextPage<{data: ProductType[]}> = ({data}) => {
 }
 
 export const getServerSideProps:GetServerSideProps = async() => {
-  const res = await fetch('/api/products');
+  const res = await fetch(`${server_url}/products`);
   const data = await res.json();
   
   return {

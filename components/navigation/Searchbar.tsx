@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import {FC, useEffect, useState} from "react";
 import Link from "next/link";
+// Components
 import { ProductType } from "../../types/Product";
+// Helpers
+import { server_url } from "../../server-config";
 
 const SearchResult:FC<{
     image: string;
@@ -32,7 +35,7 @@ const Searchbar: FC<{}> = () => {
 
     useEffect(() => {
         if(search.length > 2){
-            fetch(`/api/products?q=${search}&limit=3`).then(res => res.json()).then(data => {
+            fetch(`${server_url}/products?q=${search}&limit=3`).then(res => res.json()).then(data => {
                 setResults(data)
             })
         }
